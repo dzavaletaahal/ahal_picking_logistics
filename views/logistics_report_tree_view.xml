@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="logistics_report_tree_view">
+      <field name="name">logistics.report.tree.view</field>
+      <field name="priority" eval="20"/>
+      <field name="model">stock.picking</field>
+      <field name="arch" type="xml">
+        <tree create="0">         
+          <field name="name"/>
+          <field name="plant_cargo"/>
+          <field name="kd_cargo"/>
+          <field name="pd_cargo"/>
+          <field name="gw_usa_cargo"/>
+          <field name="tare_cargo"/>
+          <field name="rejections_fq_cargo"/>
+          <field name="net_weigth_usa_cargo" sum="Total"/>
+          <field name="weigth_in_cargo" sum="Total"/>
+          <field name="diff_weigth_ampasa_cargo" sum="Total"/>
+          <field name="price_cargo" sum="Total"/>
+          <field name="cost_cargo" sum="Total"/>
+          <field name="obs_cargo"/>
+          <field name="scheduled_date"/>
+          <field name="origin"/>
+          <field name="state"/>
+          <field name="calculo_cargo" invisible="1"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_reporte_ampasa_tree" >
+        <field name="name">Reporte Ampasa</field>
+        <field name="res_model">stock.picking</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="logistics_report_tree_view"/>
+        <field name="context">{"search_default_calculo_cargo":1}</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+          </p>
+        </field>
+    </record>
+
+   <record model="ir.actions.act_window.view" id="child_action_window_tree">
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="logistics_report_tree_view" />
+      <field name="act_window_id" ref="action_reporte_ampasa_tree" />
+    </record>
+
+    <menuitem id="reporte_ampasa_root"
+              name="Reporte Ampasa"
+              parent="stock.menu_stock_root"
+              action="action_reporte_ampasa_tree"
+              sequence="99"/>
+
+</odoo>
+

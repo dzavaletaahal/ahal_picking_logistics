@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ahal_picking_logistics_stock_picking_form" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+
+            <!--FLETES DISPONIBLES CON DOMINIO (EL DOMINIO DE DISPONIBLE DEBE FILTRAR LOS REGISTROS QUE SOLO ESTEN EN ESTE ESTADO-->
+            <xpath expr="//field[@name='picking_type_id']" position="after">
+                <field name="flete_id" domain="[('flete_status','in', ['disponible'])]" attrs="{'readonly': [('state','=','done')]}"/>                
+            </xpath>
+
+            <xpath expr="//field[@name='origin']" position="after">
+                    <field name="calculo_cargo"/>
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page name="data_logistics" string="Datos de carga" attrs="{'invisible':[('calculo_cargo','!=','calc_diff')]}">
+                        <group cols="8">
+                            <group cols="4">
+                                <field name="plant_cargo"/>
+                                <field name="kd_cargo"/>
+                                <field name="pd_cargo"/>
+                                <field name="gw_usa_cargo"/>
+                            </group>
+
+                            <group cols="4">
+                                <field name="net_weigth_usa_cargo"/>
+                                <field name="weigth_in_cargo"/>
+                                <field name="diff_weigth_ampasa_cargo"/>
+                                <field name="combos_cargo"/>
+
+                            </group>        
+                        </group>
+
+                        <div style="border-top:2px solid grey;">
+                        </div>
+
+                        <group cols="8" >
+                            <group cols="4">
+                                <field name="tare_cargo"/>
+                                <field name="water_spill_cargo"/>
+                                <field name="rejections_fq_cargo"/>
+                            </group>
+
+                            <group cols="4">
+                                <field name="price_cargo"/>
+                                <field name="cost_cargo"/>
+                                <field name="obs_cargo" placeholder="cargo observations..."/>
+
+                            </group>        
+                        </group>
+
+                </page>
+            </xpath>
+		</field>
+	</record>
+</odoo>

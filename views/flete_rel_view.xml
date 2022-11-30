@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_flete_rel_form" model="ir.ui.view">
+        <field name="name">flete.rel.form</field>
+        <field name="model">flete.rel</field>
+        <field name="arch" type="xml">
+            <form string="" >
+             <header>
+                    <field name="flete_status" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 string="flete_rel">
+                            <field name="name" placeholder="Nombre del flete" required="True"/>
+                        </h1>
+                    </div>
+                    <group cols="4">
+                    <group>
+                        <field name="flete_partner"/>
+                        <field name="flete_id"/>
+                        <field name="flete_date_con"/>
+                        <field name="flete_date_disp"/>
+                        <field name="flete_asigna"/>
+                        <field name="flete_car_id"/>
+                        <field name="flete_label" widget="many2many_tags"/>
+                        <field name="flete_place_out"/>
+                        <field name="flete_date_out"/>
+                        <field name="flete_obs"/>
+                        <field name="picking_id"/>
+                        <field name="restart_state" attrs="{'invisible':[('flete_status','=','disponible')]}"/>
+                    </group>
+                </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_flete_rel_tree" model="ir.ui.view">
+        <field name="name">flete.rel.tree</field>
+        <field name="model">flete.rel</field>
+        <field name="arch" type="xml">
+            <tree string="Fletes">
+                <field name="name"/>
+                <field name="flete_partner"/>
+                <field name="flete_status"/>
+                <field name="flete_id"/>
+                <field name="flete_date_disp"/>
+                <field name="flete_label"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_flete_rel_search" model="ir.ui.view">
+        <field name="name">flete.rel.search</field>
+        <field name="model">flete.rel</field>
+        <field name="arch" type="xml">
+            <search string="Buscar flete">
+                <field name="flete_partner"/>
+                <field name="flete_status"/>
+                <field name="flete_id"/>
+                <field name="flete_date_disp"/>
+                <field name="flete_label"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_flete_rel_tree" model="ir.actions.act_window">
+        <field name="name">Flete</field>
+        <field name="res_model">flete.rel</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Clic para crear un Flete.
+          </p>
+        </field>
+    </record>
+
+
+    <menuitem id="menu_fleet_rel_root"
+              name="Fletes"
+              sequence="10"/>
+
+    <menuitem id="fletes_rel_root"
+              name="Fletes"
+              parent="menu_fleet_rel_root"
+              sequence="10"/>
+
+    <menuitem id="menu_fletes"
+              name="Flete"
+              parent="fletes_rel_root"
+              action="action_flete_rel_tree"
+              sequence="10"/>
+
+
+
+
+
+
+</odoo>
+
