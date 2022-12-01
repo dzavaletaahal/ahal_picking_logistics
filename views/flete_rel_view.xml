@@ -27,7 +27,7 @@
                         <field name="flete_date_out"/>
                         <field name="flete_obs"/>
                         <field name="picking_id"/>
-                        <field name="restart_state" attrs="{'invisible':[('flete_status','=','disponible')]}"/>
+                        <field name="restart_state" invisible="1"/>
                     </group>
                 </group>
                 </sheet>
