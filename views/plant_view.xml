@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_plant_ampasa_form" model="ir.ui.view">
+        <field name="name">plant.ampasa.form</field>
+        <field name="model">plant.ampasa</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <div class="oe_title">
+                        <h1 string="plant_ampasa">
+                            <field name="name" placeholder="Nombre de la planta" required="True"/>
+                        </h1>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_plant_ampasa_tree" model="ir.ui.view">
+        <field name="name">plant.ampasa.tree</field>
+        <field name="model">plant.ampasa</field>
+        <field name="arch" type="xml">
+            <tree string="Planta">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_plant_ampasa_search" model="ir.ui.view">
+        <field name="name">plant.ampasa.search</field>
+        <field name="model">plant.ampasa</field>
+        <field name="arch" type="xml">
+            <search string="Buscar planta">
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_plant_ampasa_tree" model="ir.actions.act_window">
+        <field name="name">Plantas Ampasa</field>
+        <field name="res_model">plant.ampasa</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Clic para crear una Planta.
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_fletes"
+              name="Planta Ampasa"
+              parent="stock.menu_stock_config_settings"
+              action="action_plant_ampasa_tree"
+              sequence="10"/>
+
+
+</odoo>
+

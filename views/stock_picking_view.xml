@@ -8,11 +8,15 @@
 
             <!--FLETES DISPONIBLES CON DOMINIO (EL DOMINIO DE DISPONIBLE DEBE FILTRAR LOS REGISTROS QUE SOLO ESTEN EN ESTE ESTADO-->
             <xpath expr="//field[@name='picking_type_id']" position="after">
-                <field name="flete_id" domain="[('flete_status','in', ['disponible'])]" attrs="{'readonly': [('state','=','done')]}"/>                
+                <field name="flete_id" domain="[('flete_status','in', ['disponible'])]" attrs="{'readonly': [('state','=','done')]}"/>
+                <field name="brokers_ampasa"/>                
             </xpath>
 
             <xpath expr="//field[@name='origin']" position="after">
                     <field name="calculo_cargo"/>
+                    <field name="mph_ampasa"/>
+                    <field name="invoice_ampasa"/>
+                    <field name="caja_mexicana"/>
             </xpath>
 
             <xpath expr="//notebook" position="inside">

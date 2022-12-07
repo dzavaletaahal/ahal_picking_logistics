@@ -13,13 +13,25 @@ class StockPicking(models.Model):
         string=('Estatus de cálculo'),
     )
 
-    plant_cargo =  fields.Selection(
-        selection=[('sumter', 'SUMTER FRESH PLANT'), 
-                   ('douglas', 'DOUGLAS GA'),
-                   ('columbia', 'COLUMBIA'),
-                   ('bryan', 'BRYAN TX')],
-        string=('PLANT'), default='sumter',
+    plant_cargo =  fields.Many2one('plant.ampasa', string="PLANT")
+
+    brokers_ampasa = fields.Selection(
+        selection=[
+                   ('ninguno', 'Ninguno'), 
+                   ('landmark', 'Landmark Food'), 
+                   ('north', 'North Central'), 
+                   ('triple', 'Triple B Food'), 
+                   ('tyson', 'Tyson'), 
+                   ('sanderson', 'Sanderson'), 
+                   ('south', 'Southeastern'), 
+                   ('carlos_valle', 'Carlos del Valle'),
+                   ],
+        string=('Brokers'),
     )
+
+    mph_ampasa = fields.Char(string="MPH")
+    invoice_ampasa = fields.Integer(string="Invoice")
+    caja_mexicana = fields.Char(string="Caja Mexicana")
 
     kd_cargo = fields.Date(string="KILLING DATE")
     pd_cargo = fields.Date(string="PACKING DATE")
@@ -74,5 +86,13 @@ class StockPicking(models.Model):
 
     def get_cost(self):
         for rec in self:
-            rec.cost_cargo = rec.diff_weigth_ampasa_cargo - rec.price_cargo
+            rec.cost_cargo = rec.diff_weigth_ampasa_cargo * rec.price_cargo
      
+
+#CREATE NEW MODEL FOR PLANT AMPASA
+class PlantAmpasa(models.Model):
+    _name = 'plant.ampasa'
+    _description = 'Planta Ampasa'
+    _rec_name ='name'
+
+    name = fields.Char(string="Nombre de la planta")

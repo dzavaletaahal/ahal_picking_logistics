@@ -19,6 +19,7 @@
         'security/ir.model.access.csv',
         'views/stock_picking_view.xml',
         'views/flete_rel_view.xml',
+        'views/plant_view.xml',
         'views/logistics_report_tree_view.xml',
     ],
     'images': [],
