@@ -21,6 +21,7 @@
         'views/flete_rel_view.xml',
         'views/plant_view.xml',
         'views/logistics_report_tree_view.xml',
+        'views/stock_quant_view.xml',
     ],
     'images': [],
     'application': False,

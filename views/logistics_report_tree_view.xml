@@ -8,6 +8,8 @@
       <field name="arch" type="xml">
         <tree create="0">         
           <field name="name"/>
+          <field name="partner_id" string="Proveedor"/>
+          <field name="brokers_ampasa" string="Broker"/>
           <field name="plant_cargo"/>
           <field name="kd_cargo"/>
           <field name="pd_cargo"/>
