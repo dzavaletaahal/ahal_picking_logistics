@@ -6,7 +6,6 @@
         <field name="inherit_id" ref="stock.view_stock_quant_tree_inventory_editable" />
         <field name="arch" type="xml">
 
-            <!--FLETES DISPONIBLES CON DOMINIO (EL DOMINIO DE DISPONIBLE DEBE FILTRAR LOS REGISTROS QUE SOLO ESTEN EN ESTE ESTADO-->
             <xpath expr="//field[@name='lot_id']" position="after">
                 <field name="kd_cargo"/>
             </xpath>

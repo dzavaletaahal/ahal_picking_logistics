@@ -96,3 +96,11 @@ class PlantAmpasa(models.Model):
     _rec_name ='name'
 
     name = fields.Char(string="Nombre de la planta")
+
+
+class StockMoveLine(models.Model):
+    _inherit = 'stock.move.line'
+
+    kd_cargo = fields.Date(string="Killing date")
+    flete_id = fields.Many2one('flete.rel',string="Flete")
+    fecha_entrada = fields.Date(string="Fecha entrada")

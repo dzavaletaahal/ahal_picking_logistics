@@ -22,6 +22,7 @@
         'views/plant_view.xml',
         'views/logistics_report_tree_view.xml',
         'views/stock_quant_view.xml',
+        'views/mrp_detailed_operations.xml',
     ],
     'images': [],
     'application': False,
